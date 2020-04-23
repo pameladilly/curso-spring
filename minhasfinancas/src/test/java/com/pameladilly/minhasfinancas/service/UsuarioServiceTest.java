@@ -48,4 +48,6 @@ public class UsuarioServiceTest {
 		service.validarEmail("usuario@email.com");
 		
 	}
+	
+	//apenas um comentário qualquer
 }
