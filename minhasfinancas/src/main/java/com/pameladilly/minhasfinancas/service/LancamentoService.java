@@ -1,6 +1,7 @@
 package com.pameladilly.minhasfinancas.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.pameladilly.minhasfinancas.model.entity.Lancamento;
 import com.pameladilly.minhasfinancas.model.enums.StatusLancamento;
@@ -14,4 +15,5 @@ public interface LancamentoService {
 	void atualizarStatus(Lancamento lancamento, StatusLancamento status);
 	void validar(Lancamento lancamento);
 	
+	Optional<Lancamento> obterPorId(Long id);
 }
