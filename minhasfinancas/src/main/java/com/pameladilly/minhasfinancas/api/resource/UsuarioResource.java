@@ -14,15 +14,15 @@ import com.pameladilly.minhasfinancas.exception.RegraNegocioException;
 import com.pameladilly.minhasfinancas.model.entity.Usuario;
 import com.pameladilly.minhasfinancas.service.UsuarioService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/usuarios")
+@RequiredArgsConstructor
 public class UsuarioResource {
 
-	private UsuarioService service;
+	private final UsuarioService service;
 	
-	public UsuarioResource(UsuarioService service) {
-		this.service = service;
-	}
 	
 	@PostMapping
 	public ResponseEntity salvar(@RequestBody UsuarioDTO dto) {

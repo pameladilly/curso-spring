@@ -1,6 +1,7 @@
 package com.pameladilly.minhasfinancas.model.entity;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -54,7 +55,7 @@ public class Lancamento {
 	private BigDecimal valor;
 	
 	@Column(name = "data_cadastro")
-	private LocalDate dataCadastro;
+	private Date dataCadastro;
 	
 	@Column(name = "tipo")
 	@Enumerated(value = EnumType.STRING)
