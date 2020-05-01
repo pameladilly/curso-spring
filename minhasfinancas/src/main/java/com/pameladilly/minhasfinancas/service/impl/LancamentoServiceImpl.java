@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.pameladilly.minhasfinancas.exception.RegraNegocioException;
 import com.pameladilly.minhasfinancas.model.entity.Lancamento;
 import com.pameladilly.minhasfinancas.model.enums.StatusLancamento;
+import com.pameladilly.minhasfinancas.model.enums.TipoLancamento;
 import com.pameladilly.minhasfinancas.model.repository.LancamentoRepository;
 import com.pameladilly.minhasfinancas.service.LancamentoService;
 
@@ -39,7 +40,7 @@ public class LancamentoServiceImpl implements LancamentoService{
 	public Lancamento atualizar(Lancamento lancamento) {
 		Objects.requireNonNull(lancamento.getId());
 		validar(lancamento);
-		lancamento.setStatus(StatusLancamento.PENDENTE);
+		lancamento.setStatus(lancamento.getStatus());
 		return repository.save(lancamento);
 	}
 
@@ -96,6 +97,22 @@ public class LancamentoServiceImpl implements LancamentoService{
 	@Override
 	public Optional<Lancamento> obterPorId(Long id) {
 		return repository.findById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public BigDecimal obterSaldoPorUsuario(Long id) {
+		BigDecimal receitas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.RECEITA);
+		BigDecimal despesas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.DESPESA);
+		
+		if(receitas == null) {
+			receitas = BigDecimal.ZERO;
+		}
+		if(despesas == null) {
+			despesas = BigDecimal.ZERO;
+		}
+		
+		return receitas.subtract(despesas);
 	}
 
 	
