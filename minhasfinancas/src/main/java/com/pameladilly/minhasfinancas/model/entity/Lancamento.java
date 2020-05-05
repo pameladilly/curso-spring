@@ -2,7 +2,6 @@ package com.pameladilly.minhasfinancas.model.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
