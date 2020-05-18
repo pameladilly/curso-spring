@@ -1,8 +1,6 @@
 import React from 'react'
 
 import UsuarioService from '../app/service/usuarioService'
-import LocalStorageService from '../app/service/localstorageService'
-
 import currencyFormatter from 'currency-formatter'
 import { AuthContext } from '../main/provedorAutenticacao'
 
