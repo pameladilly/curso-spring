@@ -12,7 +12,9 @@ class ApiService {
 
     post(url, objeto) {
         const requesUrl = `${this.apiurl}${url}`
+        console.log(requesUrl)
         return httpClient.post(requesUrl, objeto)
+
     }
 
     put(url, objeto) {
